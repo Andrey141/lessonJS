@@ -8,4 +8,4 @@ let money,
 
 alert('Hello world!');
 
-console.log('Hello Glo Academy!');
+console.log('Hello Glo_Academy!');
