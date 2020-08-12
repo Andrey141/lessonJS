@@ -3,17 +3,9 @@
 let money = 235,
     income = 'Фриланс',
     addExpenses = 'Интернет, Такси, Коммуналка',
-    deposit = true,
     mission = 19360,
     period = 3,
-    budgetDay, 
-    money2,
-    addExpenses2,
-    deposit2,
-    expenses1,
-    expenses2,
-    amount1,
-    amount2,
+    deposit = true,
     budgetMonth,
     target;
     
@@ -27,41 +19,37 @@ console.log('"Период равен ' + period + ' месяца." ' +
 
 addExpenses = addExpenses.toLowerCase().split(', ');
 console.log(addExpenses);
-budgetDay = money / 30;
+let budgetDay = money / 30;
 console.log(budgetDay);
 //-------------------------------------------------------------------------
 money = Number(prompt('Укажите ваш месячный доход.'));
-money2 = Number(prompt('Укажите ваш месячный доход.'));
-console.log('Ваш месячный доход1: ' +  money);
-console.log('Ваш месячный доход2: ' + money2);
+console.log('Ваш месячный доход: ',  money);
 
 addExpenses = prompt('Перечислите возможные расходы за расчитываемый период через запятую.');
-addExpenses2 = prompt('Перечислите возможные расходы за расчитываемый период через запятую.');
-console.log('Возможные расходы1: ' + addExpenses);
-console.log('Возможные расходы2: ' + addExpenses2);
-
-expenses1 = +prompt('Введите сумму обязательных расходов.');
-expenses2 = +prompt('Введите сумму обязательных расходов.');
-console.log('Сумма обязательных расходов1: ' + expenses1);
-console.log('Сумма обязательных расходов2: ' + expenses2);
-
+console.log('Возможные расходы: ' + addExpenses);
 
 deposit = confirm('Есть ли у вас депозит "ОК - ДА", "ОТМЕНА - НЕТ"');
-deposit2 = confirm('Есть ли у вас депозит "ОК - ДА", "ОТМЕНА - НЕТ"');
 console.log(deposit);
-console.log(deposit2);
 
-budgetMonth = (money + money2) - (expenses1 + expenses2);
-console.log('Ежемемесячный бюджет с учетом обязательных расходов составляет: ' + budgetMonth);
+let expenses1 = prompt('Введите обязательную статью расходов1.'),
+    amount1 = Number(prompt('Во сколько это обойдется')),
+    expenses2 = prompt('Введите обязательную статью расходов2.'),
+    amount2 = Number(prompt('Во сколько это обойдется'));
+console.log('Сумма обязательных расходов на: ' + expenses1 + 'составляет: ', amount1);
+console.log('Сумма обязательных расходов на: ' + expenses2 + 'составляет: ', amount2);
+
+budgetMonth = money - (amount1 + amount2);
+console.log('Ежемесячный бюджет с учетом обязательных расходов составляет: ', budgetMonth);
 
 target = mission / budgetMonth;
-console.log(target);
-
-target = Math.round(target);
-console.log('Цель будет достигеута за ' + target + ' месяцев (округление в большую сторону)');
+console.log('Цель будет достигнута за: ', target);
+target = Math.ceil(target);
+console.log('Цель будет достигнута за ', target, 'месяцев (округление в большую сторону)');
 
 budgetDay = budgetMonth / 30;
-console.log('Бютжет в день составляет: ' + budgetDay);
+console.log('Бюджет в день составляет: ', budgetDay);
+budgetDay = Math.floor(budgetDay);
+console.log('Бюджет в день составляет: ', budgetDay, ' (округление в меньшую сторону)');
 
 if (budgetDay >= 1200) 
     console.log('У вас высокий уровень дохода.');
