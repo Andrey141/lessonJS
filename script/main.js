@@ -87,7 +87,7 @@ const getTargetMonth = function (a, b){
     return mission / accumulatedMonth;
 };
 let target = getTargetMonth(mission, accumulatedMonth);
-console.log('Вы достигните своей цели через: ', target, 'месяцев');
+console.log('Цель не будет достигнута');
 
 //Функция для подсчета дневного бюджета
 const getBudgetDay = function (a){
