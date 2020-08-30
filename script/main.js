@@ -3,7 +3,8 @@
 const todoControl = document.querySelector('.todo-control'),
     headerInput = document.querySelector('.header-input'),
     todoList = document.querySelector('.todo-list'),
-    todoCompleted = document.querySelector('.todo-completed');
+    todoCompleted = document.querySelector('.todo-completed'),
+    todRremove = document.querySelector('.todo-remove');
 
 const todoData = [];
 
@@ -45,7 +46,9 @@ todoControl.addEventListener('submit', function (event){
     }
     if(headerInput.value !== ''){
     todoData.push(newTodo);
-    }
+    headerInput.value = '';
+
+    };
 
     render();
 });
