@@ -36,9 +36,11 @@ const render = function (){
             item.completed = !item.completed;
             render();
         }); 
+        
         const todoRemove = li.querySelector('.todo-remove');
         todoRemove.addEventListener('click', function(){
-            todoData.splice(0, 1);
+            let a = todoData.indexOf(item);
+            todoData.splice(a, 1);
             render();
         });
         
