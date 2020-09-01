@@ -24,8 +24,7 @@ const render = function (){
         '</div>';
 
        // let 
-        
-
+    
         if (item.completed) {
             todoCompleted.append(li);
         } else {
@@ -36,8 +35,16 @@ const render = function (){
         btnTodoComplete.addEventListener('click', function(){
             item.completed = !item.completed;
             render();
+        }); 
+        const todoRemove = li.querySelector('.todo-remove');
+        todoRemove.addEventListener('click', function(){
+            todoData.splice(0, 1);
+            render();
         });
+        
     });
+
+
 };
 
 todoControl.addEventListener('submit', function (event){
@@ -50,23 +57,12 @@ todoControl.addEventListener('submit', function (event){
     if(headerInput.value !== ''){
     todoData.push(newTodo);
     headerInput.value = '';
-
     };
 
     render();
-    
+
     console.log(todoData);
 
-    let todoRemove = document.querySelectorAll('.todo-remove');
-    if (todoData.length > 0) {
-        todoRemove.addEventListener('click', function(){
-            todoData.forEach(function(item){
-                console.log(item);
-            
-        });
-    });
-}
-    
 });
 
 //render();
