@@ -39,12 +39,17 @@ const render = function (){
         todoRemove.addEventListener('click', function(){
             todoData.splice(todoData.indexOf(item), 1);
             render();
+            funRemove();
         });
+
         
+    let funRemove = function() {
         localStorage.setItem('myData',  JSON.stringify(todoData));
+    };   
+     
+    funRemove();   
 
     });
-
 };
 
 todoControl.addEventListener('submit', function (event){
