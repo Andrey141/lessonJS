@@ -22,8 +22,6 @@ const render = function (){
             '<button class="todo-remove"></button>' +
             '<button class="todo-complete"></button>' +
         '</div>';
-
-       // let 
     
         if (item.completed) {
             todoCompleted.append(li);
@@ -39,13 +37,13 @@ const render = function (){
         
         const todoRemove = li.querySelector('.todo-remove');
         todoRemove.addEventListener('click', function(){
-            let a = todoData.indexOf(item);
-            todoData.splice(a, 1);
+            todoData.splice(todoData.indexOf(item), 1);
             render();
         });
         
-    });
+        localStorage.setItem('myData',  JSON.stringify(todoData));
 
+    });
 
 };
 
@@ -60,14 +58,17 @@ todoControl.addEventListener('submit', function (event){
     todoData.push(newTodo);
     headerInput.value = '';
     };
+    
 
     render();
 
-    console.log(todoData);
-
 });
-
-//render();
+let f1 = function(){
+    todoData.push(JSON.parse(localStorage.myData));
+    console.log(todoData);
+};
+f1();
+render();
 
 
 
