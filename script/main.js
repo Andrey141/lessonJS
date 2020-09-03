@@ -6,7 +6,7 @@ const todoControl = document.querySelector('.todo-control'),
     todoCompleted = document.querySelector('.todo-completed');
 
 
-const todoData = [];
+let todoData = [];
 
 
 const render = function (){
@@ -63,15 +63,12 @@ todoControl.addEventListener('submit', function (event){
     render();
 
 });
-let f1 = function(){
-    todoData.push(JSON.parse(localStorage.myData));
-    console.log(todoData);
+let showSaveData = function(){
+    if (localStorage.myData === undefined){
+        return;
+    } else {
+        todoData = JSON.parse(localStorage.myData);
+        }
 };
-f1();
+showSaveData();
 render();
-
-
-
-
-
-
