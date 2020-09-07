@@ -47,7 +47,7 @@ let appData = {
         appData.getAddExpenses();
         appData.getAddIncome();
         appData.getBudget();
-
+console.log(appData.start);
         appData.showResult();
     },
     showResult: function (){
@@ -63,7 +63,7 @@ let appData = {
         let calkAccumulation = function (){
             incomePeriodValue.value = periodSelect.value * appData.budgetMonth;
         };
-        periodSelect.addEventListener('change', calkAccumulation);
+        periodSelect.addEventListener('input', calkAccumulation);
     },
     addExpensesBlok: function (){
         let cloneExpensesItems = expensesItems[0].cloneNode(true);
@@ -169,6 +169,7 @@ let changeRange = function(){
     if (salaryAmount.value !== ''){
         buttonStart.disabled = false;
         buttonStart.addEventListener('click', appData.start);
+
     } else {
         buttonStart.disabled = true;
     }
@@ -176,7 +177,7 @@ let changeRange = function(){
 salaryAmount.addEventListener('input', changeRange);
 btnPlusExpensesAdd.addEventListener('click', appData.addExpensesBlok);
 btnPlusIncomeAdd.addEventListener('click', appData.addIncomeBlok);
-periodSelect.addEventListener('change', appData.getRange);
+periodSelect.addEventListener('input', appData.getRange);
 //----------------------------------------------------------------------------------------
 
 
