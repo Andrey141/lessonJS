@@ -22,7 +22,10 @@ let   buttonStart = document.getElementById('start'),
       periodSelect = document.querySelector('.period-select'),
       budgetMonthValue = document.querySelector('.budget_month-value'),
       incomeItems = document.querySelectorAll('.income-items'),
-      periodAmount = document.querySelector('.period-amount');
+      periodAmount = document.querySelector('.period-amount'),
+      input = document.querySelectorAll('input'),
+      buttonСancel = document.getElementById('cancel');
+
       buttonStart.disabled = true;
       
       
@@ -41,14 +44,21 @@ let appData = {
     expensesMonth: 0,
     start: function (){
         appData.budget = +salaryAmount.value;
-        appData.getExpenses();
-        appData.getIncome();
-        appData.getExpensesMonth();
-        appData.getAddExpenses();
-        appData.getAddIncome();
-        appData.getBudget();
-console.log(appData.start);
-        appData.showResult();
+        this.getExpenses();
+        this.getIncome();
+        this.getExpensesMonth();
+        this.getAddExpenses();
+        this.getAddIncome();
+        this.getBudget();
+
+        this.showResult();
+
+        for (let i = 0; i <= 12; i++){
+            input[i].disabled = true;
+        }
+        buttonStart.style.display = 'none';
+        buttonСancel.style.display = 'block';
+        
     },
     showResult: function (){
         let a = 0;
@@ -99,7 +109,7 @@ console.log(appData.start);
                 appData.income[incomeTitle] = incomCost;
             }; 
         });
-},
+    },
     getAddIncome: function (){
         additionalIncomeItem.forEach(function(item){
         let itemValue = item.value.trim();
@@ -135,7 +145,7 @@ console.log(appData.start);
     getTargetMonth: function (){
         return targetAmount.value / appData.budgetMonth;
     },
-    getStatusIncome: function(budgetDay){
+    getStatusIncome: function(/*budgetDay*/){
         appData.budgetDay >= 1200? console.log('У вас высокий уровень дохода.') : 
         appData.budgetDay >=600 && appData.budgetDay < 1200? console.log('У вас средний уровень дохода.'):
         appData.budgetDay < 600 && appData.budgetDay > 0? console.log('У вас низкий уровень дохода') : console.log('У вас что то пошло не так.');
@@ -150,7 +160,6 @@ console.log(appData.start);
                 while(isNaN(parseFloat(appData.moneyDeposit)) || (appData.moneyDeposit === '')){
                     appData.moneyDeposit = prompt('Какая сумма положена?', 10000);
                 }
-
         }
 
     },
@@ -161,6 +170,12 @@ console.log(appData.start);
         console.log(periodSelect.value);  ///---
         periodAmount.textContent = periodSelect.value;
 
+    },
+
+    reset: function(){
+        buttonСancel.style.display = 'none';
+        buttonStart.style.display = 'block';
+
     }
 };
 //----------------------------------------------------------------------------------------
@@ -168,7 +183,7 @@ console.log(appData.start);
 let changeRange = function(){
     if (salaryAmount.value !== ''){
         buttonStart.disabled = false;
-        buttonStart.addEventListener('click', appData.start);
+        buttonStart.addEventListener('click', appData.start.bind(appData));
 
     } else {
         buttonStart.disabled = true;
@@ -178,6 +193,7 @@ salaryAmount.addEventListener('input', changeRange);
 btnPlusExpensesAdd.addEventListener('click', appData.addExpensesBlok);
 btnPlusIncomeAdd.addEventListener('click', appData.addIncomeBlok);
 periodSelect.addEventListener('input', appData.getRange);
+buttonСancel.addEventListener('click', appData.reset);
 //----------------------------------------------------------------------------------------
 
 
