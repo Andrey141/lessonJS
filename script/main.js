@@ -25,7 +25,7 @@ let   buttonStart = document.getElementById('start'),
       periodAmount = document.querySelector('.period-amount'),
       input = document.querySelectorAll('input'),
       buttonСancel = document.getElementById('cancel');
-
+console.log(input);
       buttonStart.disabled = true;
       
       
@@ -176,6 +176,19 @@ let appData = {
         buttonСancel.style.display = 'none';
         buttonStart.style.display = 'block';
 
+        for (let i = 0; i <= 12; i++){
+            input[i].disabled = false;
+            input[i].value = '';
+        }
+
+       appData.budgetMonth = 0;
+       appData.budgetDay = '';
+       appData.expensesMonth = '';
+       appData.addExpenses.push(' ');
+       appData.addIncome.push(' ');
+       //appData.getTargetMonth = '';
+
+       appData.showResult();
     }
 };
 //----------------------------------------------------------------------------------------
