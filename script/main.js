@@ -4,7 +4,7 @@ let   buttonStart = document.getElementById('start'),
       btnPlusIncomeAdd = document.getElementsByTagName('button')[0],
       btnPlusExpensesAdd = document.getElementsByTagName('button')[1],
       depositCheckmark = document.querySelector('#deposit-checkmark'),
-      additionalIncomeItem = document.querySelector('.additional_income-item'),
+      additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
       //additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[1],
       //additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[2],
       budgetDayValue = document.querySelector('.budget_day-value'),
@@ -111,8 +111,8 @@ let appData = {
         });
     },
     getAddIncome: function (){
-        let addIncome = additionalIncomeItem.value.split(',');
-        addIncome.forEach(function(item){
+        //let addIncome = additionalIncomeItem.value.split(',');
+        additionalIncomeItem.forEach(function(item){
             item = item.trim();
             if(item !== ''){
                 appData.addIncome.push(item);
