@@ -4,9 +4,9 @@ let   buttonStart = document.getElementById('start'),
       btnPlusIncomeAdd = document.getElementsByTagName('button')[0],
       btnPlusExpensesAdd = document.getElementsByTagName('button')[1],
       depositCheckmark = document.querySelector('#deposit-checkmark'),
-      additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
-      additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[1],
-      additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[2],
+      additionalIncomeItem = document.querySelector('.additional_income-item'),
+      //additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[1],
+      //additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[2],
       budgetDayValue = document.querySelector('.budget_day-value'),
       expensesMonthValue = document.querySelector('.expenses_month-value'),
       additionalIncomeValue = document.querySelector('.additional_income-value'),
@@ -111,10 +111,11 @@ let appData = {
         });
     },
     getAddIncome: function (){
-        additionalIncomeItem.forEach(function(item){
-        let itemValue = item.value.trim();
-        if(itemValue !== ''){
-            appData.addIncome.push(itemValue);
+        let addIncome = additionalIncomeItem.value.split(',');
+        addIncome.forEach(function(item){
+            item = item.trim();
+            if(item !== ''){
+                appData.addIncome.push(item);
         }
       });
     },
