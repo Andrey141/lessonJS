@@ -28,7 +28,6 @@ let   buttonStart = document.getElementById('start'),
 console.log(input);
       buttonStart.disabled = true;
       
-      
 let appData = {
     budget: 0,
     budgetDay: 0,
