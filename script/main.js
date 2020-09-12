@@ -167,7 +167,7 @@ let appData = {
         return appData.budgetMonth * periodSelect.value;
     },
     getRange: function (){
-        console.log(periodSelect.value);  ///---
+        console.log(periodSelect.value); 
         periodAmount.textContent = periodSelect.value;
 
     },
@@ -184,8 +184,8 @@ let appData = {
        appData.budgetMonth = 0;
        appData.budgetDay = '';
        appData.expensesMonth = '';
-       appData.addExpenses.push(' ');
-       appData.addIncome.push(' ');
+       appData.addExpenses = [];
+       appData.addIncome = [];
        //appData.getTargetMonth = '';
 
        appData.showResult();
