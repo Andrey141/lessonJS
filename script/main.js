@@ -180,14 +180,42 @@ let appData = {
             input[i].value = '';
         }
 
-       appData.budgetMonth = 0;
+       appData.budgetMonth = '';
        appData.budgetDay = '';
        appData.expensesMonth = '';
        appData.addExpenses = [];
        appData.addIncome = [];
-       //appData.getTargetMonth = '';
+       periodSelect.value = 1;
+       periodAmount.textContent = periodSelect.value;
 
+       
+       //appData.getTargetMonth = '';
+       
+       let removeElement = function (){
+           //------------------ДОПОЛНИТЕЛЬНЫЙ ДОХОД------------------
+           let incomeFun = document.querySelector('.income');
+            incomeItems = document.querySelectorAll('.income-items');
+           //------------------ОБЯЗАТЕЛЬНЫЕ РАСХОДЫ------------------
+           let expensesFun = document.querySelector('.expenses');
+            expensesItems = document.querySelectorAll('.expenses-items');
+
+ 
+            while (incomeItems.length > 1){
+                incomeFun.removeChild(incomeItems[0]);
+                incomeItems = document.querySelectorAll('.income-items');
+                btnPlusIncomeAdd.style.display = 'block';
+            };
+
+            while (expensesItems.length > 1){
+                expensesFun.removeChild(expensesItems[0]);
+                expensesItems = document.querySelectorAll('.expenses-items');
+                btnPlusExpensesAdd.style.display = 'block';
+            };
+
+       }; 
+       removeElement();
        appData.showResult();
+       targetMonthValue.value = '';
     }
 };
 //----------------------------------------------------------------------------------------
@@ -195,12 +223,11 @@ let appData = {
 let changeRange = function(){
     if (salaryAmount.value !== ''){
         buttonStart.disabled = false;
-        buttonStart.addEventListener('click', appData.start.bind(appData));
-
     } else {
         buttonStart.disabled = true;
     }
 };
+buttonStart.addEventListener('click', appData.start.bind(appData));
 salaryAmount.addEventListener('input', changeRange);
 btnPlusExpensesAdd.addEventListener('click', appData.addExpensesBlok);
 btnPlusIncomeAdd.addEventListener('click', appData.addIncomeBlok);
