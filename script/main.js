@@ -102,7 +102,7 @@ let appData = {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
             if (itemExpenses !== '' && cashExpenses !== ''){
-                appData.expenses[itemExpenses] = cashExpenses;
+                this.expenses[itemExpenses] = cashExpenses;
             }
         });
     },
@@ -122,7 +122,7 @@ let appData = {
             let incomeTitle = item.querySelector('.income-title').value;
             let incomCost = item.querySelector('.income-amount').value;
             if (incomeTitle !== '' && incomCost !== ''){
-                appData.income[incomeTitle] = incomCost;
+                this.income[incomeTitle] = incomCost;
             }; 
         });
     },
@@ -141,7 +141,7 @@ let appData = {
         addExpenses.forEach(function(item){
             item = item.trim();
             if(item !== ''){
-                appData.addExpenses.push(item);
+                this.addExpenses.push(item);
             }
         });
     },
@@ -157,7 +157,7 @@ let appData = {
     getBudget: function(){
         let sum = 0;
         let sumAdditionalIncome = 0;
-        for (let key in appData.expenses){
+        for (let key in this.expenses){
         sum += +this.expenses[key];
         }
 
@@ -187,7 +187,7 @@ let appData = {
                     this.procentDeposit = prompt('Какой годовой процент?', 10);
                 }
                 this.moneyDeposit = prompt('Какая сумма положена?', 10000);
-                while(isNaN(parseFloat(appData.moneyDeposit)) || (this.moneyDeposit === '')){
+                while(isNaN(parseFloat(this.moneyDeposit)) || (this.moneyDeposit === '')){
                     this.moneyDeposit = prompt('Какая сумма положена?', 10000);
                 }
         }
@@ -248,7 +248,7 @@ let appData = {
             };
        }; 
        removeElement();
-       appData.showResult();
+       this.showResult();
        targetMonthValue.value = '';
     }
 };
