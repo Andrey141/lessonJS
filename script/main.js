@@ -217,14 +217,15 @@ let appData = {
 
 		});
 
-        appData.budgetMonth = '';
-        appData.budgetDay = '';
+        this.budgetMonth = '';
+        this.budgetDay = '';
         this.expensesMonth = '';
         this.addExpenses = [];
         this.addIncome = [];
-        appData.income = {};
+        this.income = {};
        periodSelect.value = 1;
        periodAmount.textContent = periodSelect.value;
+       console.log(this);
      
        let removeElement = function (){
            //------------------ДОПОЛНИТЕЛЬНЫЙ ДОХОД------------------
@@ -265,7 +266,7 @@ salaryAmount.addEventListener('input', changeRange);
 btnPlusExpensesAdd.addEventListener('click', appData.addExpensesBlok);
 btnPlusIncomeAdd.addEventListener('click', appData.addIncomeBlok);
 periodSelect.addEventListener('input', appData.getRange);
-buttonСancel.addEventListener('click', appData.reset);
+buttonСancel.addEventListener('click', appData.reset.bind(appData));
 //----------------------------------------------------------------------------------------
 
 
