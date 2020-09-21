@@ -168,7 +168,7 @@ let appData = {
 
 
         this.budgetMonth = this.budget + sumAdditionalIncome + this.incomeMonth - sum;  
-        this.budgetDay = Math.floor(appData.budgetMonth / 30); 
+        this.budgetDay = Math.floor(this.budgetMonth / 30); 
     },
     getTargetMonth: function (){
         return targetAmount.value / this.budgetMonth;
