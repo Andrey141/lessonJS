@@ -74,7 +74,6 @@ let appData = {
     },
 	
     showResult: function (){
-        //let a = 0;
         budgetMonthValue.value = this.budgetMonth;
         budgetDayValue.value = Math.floor(this.budgetDay);
         expensesMonthValue.value = this.expensesMonth;
@@ -207,6 +206,8 @@ let appData = {
     reset: function(){
         buttonСancel.style.display = 'none';
         buttonStart.style.display = 'block';
+        buttonStart.disabled = true;
+
 
 		let inputData = data.querySelectorAll('input');
 		console.log(inputData); 
@@ -216,11 +217,12 @@ let appData = {
 
 		});
 
-        this.budgetMonth = '';
-        this.budgetDay = '';
+        appData.budgetMonth = '';
+        appData.budgetDay = '';
         this.expensesMonth = '';
         this.addExpenses = [];
         this.addIncome = [];
+        appData.income = {};
        periodSelect.value = 1;
        periodAmount.textContent = periodSelect.value;
      
