@@ -104,7 +104,7 @@ let appData = {
             if (itemExpenses !== '' && cashExpenses !== ''){
                 this.expenses[itemExpenses] = cashExpenses;
             }
-        });
+        }, this);
     },
 	
     addIncomeBlok: function (){
@@ -124,7 +124,7 @@ let appData = {
             if (incomeTitle !== '' && incomCost !== ''){
                 this.income[incomeTitle] = incomCost;
             }; 
-        });
+        }, this);
     },
 	
     getAddIncome: function (){
@@ -133,7 +133,7 @@ let appData = {
         if(itemValue !== ''){
             this.addIncome.push(itemValue);
         }
-      });
+      }, this);
     },
 	
     getAddExpenses: function (){
@@ -143,7 +143,7 @@ let appData = {
             if(item !== ''){
                 this.addExpenses.push(item);
             }
-        });
+        }, this);
     },
 	
     getExpensesMonth: function() {
